@@ -19,7 +19,7 @@ const theme = createTheme();
 export const Singup = () => {
   const [loginData, setLoginData] = useState({});
 
-  const { user, singUp, isLoading, authError } = useAuth();
+  const { user, singUp, isLoading, singInWithGoogle, authError } = useAuth();
 
   const location = useLocation();
   const history = useHistory();
@@ -38,6 +38,10 @@ export const Singup = () => {
       }
       singUp(loginData.email, loginData.password, location, history);
       e.preventDefault();
+  }
+  const handleGoogleSingIn = (e) => {
+    singInWithGoogle(location, history)
+    e.preventDefault();
   }
 
     return (
@@ -101,7 +105,7 @@ export const Singup = () => {
                   required
                   fullWidth
                   name="password2"
-                  label="Password"
+                  label="Re-write Password"
                   onChange={handleOnChange}
                   type="password"
                   id="password"
@@ -140,6 +144,8 @@ export const Singup = () => {
           Create User Succesfully!
         </Alert>}
         </Box>
+        <p>------------------------------------------------------------------------</p>
+      <Button onClick={handleGoogleSingIn} fullWidth style={{backgroundColor: '#19D3AE', color: '#9C27B0', fontWeight: 600}} variant="contained">SingIn with Google</Button>
       </Container>
     </ThemeProvider>
     );
