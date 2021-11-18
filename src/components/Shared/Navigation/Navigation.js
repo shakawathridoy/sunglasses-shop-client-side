@@ -14,8 +14,11 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import useAuth from '../../../Hooks/useAuth';
 
 const Navigation = () => {
+
+  const {user, logout} = useAuth()
 
     const theme = useTheme()
 
@@ -68,7 +71,12 @@ const Navigation = () => {
           <Box className={navItemContainer}>
               <Link className={navItem} to="/home"> <Button color="inherit">Home</Button></Link>
               <Link className={navItem} to="/explore"> <Button color="inherit">Explore</Button></Link>
-              <Link className={navItem} to="/products"> <Button color="inherit">Login</Button></Link>
+              {
+                user?.email ? 
+                <Link className={navItem} to="/login"> <Button onClick={logout} color="inherit">Logout</Button></Link>
+                :
+              <Link className={navItem} to="/login"> <Button color="inherit">Login</Button></Link>
+              }
           </Box>
         </Toolbar>
             </Container>
@@ -126,22 +134,24 @@ const Navigation = () => {
                 </ListItemText>
               </ListItem>
                 <Divider />
+              {
+                user?.email ? 
+                <ListItem button>
+                <ListItemText>
+                   <Link onClick={logout} className={mobileNavItem} to="/logout">
+                        Logout
+                   </Link>
+                </ListItemText>
+              </ListItem> 
+              :
               <ListItem button>
                 <ListItemText>
-                   <Link className={mobileNavItem} to="/Login">
+                   <Link className={mobileNavItem} to="/login">
                         Login
                    </Link>
                 </ListItemText>
               </ListItem>
-                <Divider />
-                <Divider />
-              <ListItem button>
-                <ListItemText>
-                   <Link className={mobileNavItem} to="/Logout">
-                        Logout
-                   </Link>
-                </ListItemText>
-              </ListItem>
+              }
                 <Divider />
 
           </List>
