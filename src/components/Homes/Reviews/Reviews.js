@@ -1,29 +1,42 @@
-import { Grid, Paper, Typography } from '@mui/material';
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import { infoData } from '../../../data/data';
+import Button from '@restart/ui/esm/Button';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { Card, Carousel, Container, FormControl, InputGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Reviews = () => {
-    return (
-        <Container>
-            <Grid container spacing={3}>
-                {
-                    infoData.map(({Icon, title, description, background}) => <Grid key={title} item xs={12} sm={12} md={4} >
-                    <Paper variant="outlined" sx={{display: 'flex', justifyContent: 'space-between', backgroundColor: background, color: 'white', p: 5, borderRadius: 3}}>
-                        <Icon sx={{fontSize: 60}} />
-                        <Typography variant="body1">
-                            {title}
-                        </Typography>
-                       
-                        <Typography variant="subtitle">
-                            {description}
-                        </Typography>
-                    </Paper>
+    const [services, setServices] = useState([]);
 
-                </Grid>)
-                }
-            </Grid>
-        </Container>
+    // load data from json 
+
+    useEffect(() => {
+        fetch("http://localhost:5000/reviews")
+        .then(res => res.json())
+        .then(data => setServices(data))
+    } , [])
+
+    return (
+        <>
+            <div>
+               
+                    {
+                        services.map(service => 
+                                
+                           
+                           <div className="text-center container">
+                            <h1>Name: {service.name}</h1>
+                            <img src={service.img} alt="" />
+                            <p className="warning">Rating: {service.rating}*</p>
+                           </div>
+                            )
+                            
+                        }
+                </div>
+                <div className="text-center">
+
+                </div>
+        </>
     );
 };
 

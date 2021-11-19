@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@restart/ui/esm/Button';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Card, FormControl, InputGroup, Spinner } from 'react-bootstrap';
+import { Card, FormControl, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Products.css'
 
