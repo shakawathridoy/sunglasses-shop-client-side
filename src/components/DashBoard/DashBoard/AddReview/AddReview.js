@@ -7,7 +7,7 @@ const AddReview = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = (data, e) => {
-      fetch("http://localhost:5000/addReview", {
+      fetch("https://safe-cove-57794.herokuapp.com/addReview", {
           method: "POST",
           headers: {"content-type": "application/json"},
           body: JSON.stringify(data)

@@ -14,7 +14,7 @@ const OrderForm = () => {
     
     const onSubmit = (data) => {
         data.status = "Pending";
-       fetch("http://localhost:5000/confirmOrder", {
+       fetch("https://safe-cove-57794.herokuapp.com/confirmOrder", {
            method: "POST",
            headers: {"content-type": "application/json"},
            body: JSON.stringify(data),
@@ -26,7 +26,7 @@ const OrderForm = () => {
     }
 
     useEffect(() => 
-        fetch(`http://localhost:5000/singleProduct/${productId}`)
+        fetch(`https://safe-cove-57794.herokuapp.com/singleProduct/${productId}`)
         .then(res => res.json())
         .then(data => setBookings(data))
      , []);

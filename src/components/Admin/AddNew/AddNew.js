@@ -9,7 +9,7 @@ const AddNew = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data, e) => {
-      fetch("http://localhost:5000/addNew", {
+      fetch("https://safe-cove-57794.herokuapp.com/addNew", {
           method: "POST",
           headers: {"content-type": "application/json"},
           body: JSON.stringify(data)

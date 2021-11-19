@@ -14,7 +14,7 @@ const Explore = () => {
     // load data from json 
 
     useEffect(() => {
-        fetch("http://localhost:5000/products")
+        fetch("https://safe-cove-57794.herokuapp.com/products")
         .then(res => res.json())
         .then(data => setServices(data))
     } , [])
