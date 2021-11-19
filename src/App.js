@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AddNew from './components/Admin/AddNew/AddNew';
 import Home from './components/Homes/Home/Home';
+import Explore from './components/Homes/Products/Explore';
 import Products from './components/Homes/Products/Products';
 import Login from './components/LogReg/Login/Login';
 import PrivateRoute from './components/LogReg/PrivateRoute/PrivateRoute';
@@ -27,6 +28,9 @@ const App = () => {
         </Route>
         <Route path="/products">
           <Products></Products>
+        </Route>
+        <Route path="/explore">
+          <Explore></Explore>
         </Route>
         <PrivateRoute path="/orderForm/:productId">
           <OrderForm></OrderForm>

@@ -70,6 +70,7 @@ const Navigation = () => {
           </Typography>
           <Box className={navItemContainer}>
               <Link className={navItem} to="/home"> <Button color="inherit">Home</Button></Link>
+              <Link className={navItem} to="/explore"> <Button color="inherit">Explore</Button></Link>
               {
                 user?.email ? 
                 <Link className={navItem} to="/login"> <Button onClick={logout} color="inherit">Logout</Button></Link>

@@ -1,11 +1,14 @@
-import Button from '@restart/ui/esm/Button';
 import React from 'react';
+import Button from '@restart/ui/esm/Button';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Card, FormControl, InputGroup, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Products.css'
-const Products = () => {
+
+
+const Explore = () => {
+
     const [services, setServices] = useState([]);
 
     // load data from json 
@@ -13,7 +16,7 @@ const Products = () => {
     useEffect(() => {
         fetch("http://localhost:5000/products")
         .then(res => res.json())
-        .then(data => setServices(data.slice(0, 6)))
+        .then(data => setServices(data))
     } , [])
 
     return (
@@ -71,4 +74,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default Explore;
