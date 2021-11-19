@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import AddNew from './components/Admin/AddNew/AddNew';
 import Home from './components/Homes/Home/Home';
 import Products from './components/Homes/Products/Products';
 import Login from './components/LogReg/Login/Login';
@@ -27,8 +28,11 @@ const App = () => {
         <Route path="/products">
           <Products></Products>
         </Route>
-        <PrivateRoute path="/orderform">
+        <PrivateRoute path="/orderForm/:productId">
           <OrderForm></OrderForm>
+        </PrivateRoute>
+        <PrivateRoute path="/addNew">
+          <AddNew></AddNew>
         </PrivateRoute>
         <Route path="/login">
           <Login></Login>

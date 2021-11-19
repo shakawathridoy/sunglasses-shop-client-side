@@ -70,13 +70,19 @@ const Navigation = () => {
           </Typography>
           <Box className={navItemContainer}>
               <Link className={navItem} to="/home"> <Button color="inherit">Home</Button></Link>
-              <Link className={navItem} to="/explore"> <Button color="inherit">Explore</Button></Link>
               {
                 user?.email ? 
                 <Link className={navItem} to="/login"> <Button onClick={logout} color="inherit">Logout</Button></Link>
                 :
-              <Link className={navItem} to="/login"> <Button color="inherit">Login</Button></Link>
+                <Link className={navItem} to="/login"> <Button color="inherit">Login</Button></Link>
               }
+              { 
+                user?.email ?
+                <Link className={navItem} to="/dashboard"> <Button className=" btn text-white bg-danger" >Dashboard</Button></Link> :
+                <Link className={navItem} to="/explore"> <Button color="inherit">Explore</Button></Link>
+                
+                }
+              <button style={{fontWeight: 900}} className=" btn text-danger">{user.displayName}</button> 
           </Box>
         </Toolbar>
             </Container>
@@ -96,20 +102,45 @@ const Navigation = () => {
           <List>
               <ListItem button>
                 <ListItemText>
+                   <button style={{fontWeight: 900}} className=" btn text-danger">{user.displayName}</button> 
+                </ListItemText>
+              </ListItem>
+                <Divider />
+              <ListItem button>
+                <ListItemText>
                    <Link className={mobileNavItem} to="/home">
                         Home
                    </Link>
                 </ListItemText>
               </ListItem>
                 <Divider />
+              {
+                user?.email ?
               <ListItem button>
+                <ListItemText>
+                   <Link className={mobileNavItem} to="/dashboard">
+                        Dashborad
+                   </Link>
+                </ListItemText>
+              </ListItem>
+              :
+                <ListItem button>
                 <ListItemText>
                    <Link className={mobileNavItem} to="/explore">
                         Explore
                    </Link>
                 </ListItemText>
               </ListItem>
+              }
                 <Divider />
+                <ListItem button>
+                <ListItemText>
+                   <Link className={mobileNavItem} to="/explore">
+                        Explore
+                   </Link>
+                </ListItemText>
+              </ListItem>
+                {/* <Divider />
               <ListItem button>
                 <ListItemText>
                    <Link className={mobileNavItem} to="/myorders">
@@ -133,7 +164,7 @@ const Navigation = () => {
                    </Link>
                 </ListItemText>
               </ListItem>
-                <Divider />
+                <Divider /> */}
               {
                 user?.email ? 
                 <ListItem button>
